@@ -55,10 +55,11 @@ namespace clientes
 		//espacio en almacenamiento, ya que osn dos bytes
 		short m_num_item_input_cliente{};
 		//Para este caso al desconocer el valor ingresado por los clientes, es mejor utilizar un std::vector 
-		//permite redimensionar, si le cliente desea modificar. Mientras que un array de tipo fijo es mas inseguro, porque no cononoce su tamaño, y la informaciona almacenar debe estar en tiempo de compilacion. A diferencia de un std::vector.
+		//permite redimensionar, si le cliente desea modificar. Mientras que un array de tipo fijo es mas inseguro, porque no cononoce su tamaÃ±o, y la informaciona almacenar debe estar en tiempo de compilacion. A diferencia de un std::vector.
 		std::vector<std::string> vect_nom_prod_inpu_cliente{};
 
-		//Declaramos un puntero string para probar las diferencias en funcionalidades con el sd::vector
+		//Declaramos un puntero string para probar las diferencias en 
+                //funcionalidades con el sd::vector
 		std::string *m_vect_nom_prod_in_clien_ptr;
 
 		
