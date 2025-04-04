@@ -22,11 +22,11 @@ namespace clientes
 
 
 		//Declaracion de construccion, que pide dos argumentos de tipo string_view
-		Clientes(std::string_view p_nombre, std::string_view p_apellido, short num_items);
+		Clientes(std::string_view p_nombre, std::string_view p_apellido, int ID, short num_items);
 
 
 		Clientes(std::string_view p_nombre, std::string_view  s_nombre ,
-			std::string_view p_apellido, std::string_view s_apellido , short num_items);
+			std::string_view p_apellido, std::string_view s_apellido , int ID , short num_items);
 
 
 		//Eliminacion del constructor de copias, no queremos asignarle a otro cliente las propiiedades de uno ya existente por eso lo eliminamos
@@ -34,11 +34,15 @@ namespace clientes
 
 		Clientes& operator=(const Clientes& m_clientes);
 
+		
+
 		//Funciones setter
 		void agregar_items(std::string*  &items);
 
+
+
 		//mostar los items sin modificarlos
-		const std::string* mostrar_item()const;
+		void mostrar_item()const;
 
 		//desctrutir
 		~Clientes();
@@ -54,10 +58,9 @@ namespace clientes
 		//Los datos van a iniciar desde 0 y seran siempre valores positivos, se utiliza short para ahorrar
 		//espacio en almacenamiento, ya que osn dos bytes
 		short m_num_item_input_cliente{};
-		//Para este caso al desconocer el valor ingresado por los clientes, es mejor utilizar un std::vector 
-		//permite redimensionar, si le cliente desea modificar. Mientras que un array de tipo fijo es mas inseguro, porque no cononoce su tamaño, y la informaciona almacenar debe estar en tiempo de compilacion. A diferencia de un std::vector.
-		std::vector<std::string> vect_nom_prod_inpu_cliente{};
 
+		//variable miembro documento de identidad
+		int m_ID{};
 		//Declaramos un puntero string para probar las diferencias en 
                 //funcionalidades con el sd::vector
 		std::string *m_vect_nom_prod_in_clien_ptr;

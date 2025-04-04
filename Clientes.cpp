@@ -5,8 +5,9 @@
 namespace clientes
 {
 	//Constructor que inicializa 
-	Clientes::Clientes(std::string_view nombre, std::string_view apellido , short num_items)
-		: Clientes::Clientes{nombre , " " , apellido , " " , num_items}
+	Clientes::Clientes(std::string_view nombre, std::string_view apellido , int ID , short num_items)
+		: Clientes::Clientes{nombre , " " , apellido ,
+		" " , ID , num_items}
 	{
 		
 
@@ -14,10 +15,12 @@ namespace clientes
 	}
 
 	//Constructor delegado
-	Clientes::Clientes(std::string_view p_nombre, std::string_view s_nombre, std::string_view p_apellido, std::string_view s_apellido, short num_items)
+	Clientes::Clientes(std::string_view p_nombre, std::string_view s_nombre, std::string_view p_apellido, std::string_view s_apellido, int ID , short num_items)
 		: m_primr_nombre{p_nombre} , m_seg_nombre{s_nombre} ,
 		m_primr_apellido{m_primr_apellido}, m_seg_apellido{s_apellido} ,
-		m_num_item_input_cliente{num_items}
+		m_ID{ ID } , m_num_item_input_cliente {
+		num_items
+	}
 
 	{
 		m_vect_nom_prod_in_clien_ptr = new std::string[m_num_item_input_cliente];
@@ -28,7 +31,7 @@ namespace clientes
 		//memoria deasignada
 		delete[] m_vect_nom_prod_in_clien_ptr;
 		m_vect_nom_prod_in_clien_ptr = nullptr;
-		std::cout << "Memoria Limpiada ";
+		std::cout << "\nMemoria Limpiada ";
 	}
 
 	
@@ -36,6 +39,7 @@ namespace clientes
 	Clientes::Clientes(const Clientes& m_clientes)
 		: m_primr_nombre{ m_clientes.m_primr_nombre }, m_seg_nombre{ m_clientes.m_seg_nombre },
 		m_primr_apellido{m_clientes.m_primr_apellido} , m_seg_apellido{m_clientes.m_seg_apellido},
+		m_ID{m_clientes.m_ID},
 		m_num_item_input_cliente{ m_clientes.m_num_item_input_cliente }
 	{
 		
@@ -84,9 +88,14 @@ namespace clientes
 		std::copy(items , items + m_num_item_input_cliente, m_vect_nom_prod_in_clien_ptr);
 	}
 
-	const std::string* Clientes::mostrar_item() const
+	void Clientes::mostrar_item() const
 	{
-		return m_vect_nom_prod_in_clien_ptr;
+		std::cout << "\nLista de items\n";
+		for (std::size_t i{ 0 }; i < m_num_item_input_cliente; i++)
+		{
+			std::cout << "\n" << m_vect_nom_prod_in_clien_ptr[i];
+		}
+		
 	}
 
 }
