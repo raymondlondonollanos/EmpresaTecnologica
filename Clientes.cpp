@@ -29,9 +29,14 @@ namespace clientes
 	Clientes::~Clientes()
 	{
 		//memoria deasignada
-		delete[] m_vect_nom_prod_in_clien_ptr;
+		if(m_vect_nom_prod_in_clien_ptr != nullptr)
+		{
+			
+			delete[] m_vect_nom_prod_in_clien_ptr;
 		m_vect_nom_prod_in_clien_ptr = nullptr;
 		std::cout << "\nMemoria Limpiada ";
+		}
+
 	}
 
 	
@@ -45,7 +50,7 @@ namespace clientes
 		
 			
 		
-			// Copia profunda del array dinámico
+			// Copia profunda del array dinÃ¡mico
 			m_vect_nom_prod_in_clien_ptr = new std::string[m_num_item_input_cliente];
 
 			std::copy(m_clientes.m_vect_nom_prod_in_clien_ptr,
@@ -58,7 +63,7 @@ namespace clientes
 
 	Clientes& Clientes::operator=(const Clientes& m_clientes)
 	{
-		// Evitar la autoasignación
+		// Evitar la autoasignaciÃ³n
 		if (this == &m_clientes) {
 			return *this;
 		}
@@ -73,7 +78,7 @@ namespace clientes
 		m_seg_apellido = m_clientes.m_seg_apellido;
 		m_num_item_input_cliente = m_clientes.m_num_item_input_cliente;
 
-		// Copia profunda del array dinámico
+		// Copia profunda del array dinÃ¡mico
 		m_vect_nom_prod_in_clien_ptr = new std::string[m_num_item_input_cliente];
 		std::copy(m_clientes.m_vect_nom_prod_in_clien_ptr,
 			m_clientes.m_vect_nom_prod_in_clien_ptr + m_num_item_input_cliente,
