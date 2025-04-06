@@ -93,6 +93,33 @@ namespace clientes
 		std::copy(items , items + m_num_item_input_cliente, m_vect_nom_prod_in_clien_ptr);
 	}
 
+        const std::string* pedir_items_vec_copy()
+        {
+                std::cout << "\nIngresa el numero de items a comprar en nuestras empresa de tecnologia: ";
+		std::cin >> num_items;
+
+		clientes::Clientes cl{p_nombre , p_apellido , ID, num_items};
+
+		//Inicializamos el puntero para almacenar los items ingresado por el usuario
+		m_copy_vect_items_ptr = new std::string[num_items];
+
+		for (std::size_t i{ 0 }; i < m_copy_vect_items_ptr; i++)
+		{
+			//creacion de variable local string 
+			std::string items_local{};
+			
+			std::cout << "\nIngresa el items " << (i + 1) 
+				<< ": ";
+			std::cin >> items_local;
+			m_copy_vect_items_ptr[i] = items_local;
+		}
+
+		cl.agregar_items(items_ptr);
+            
+		
+	}
+
+
 	void Clientes::mostrar_item() const
 	{
 		std::cout << "\nLista de items\n";
