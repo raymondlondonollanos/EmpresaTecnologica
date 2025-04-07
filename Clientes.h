@@ -37,10 +37,10 @@ namespace clientes
 		
 
 		//Funciones setter
-		void agregar_items(std::string*  &items);
+		void agregar_items();
 
 
-                const std::string* pedir_items_vec_copy();
+        const std::string* pedir_items_vec_copy(short num_items);
 
 
 
@@ -60,14 +60,14 @@ namespace clientes
 		std::string m_seg_apellido{};
 		//Los datos van a iniciar desde 0 y seran siempre valores positivos, se utiliza short para ahorrar
 		//espacio en almacenamiento, ya que osn dos bytes
-		short m_num_item_input_cliente{};
+		short m_num_item{};
 
 		//variable miembro documento de identidad
 		int m_ID{};
 		//Declaramos un puntero string para probar las diferencias en 
                 //funcionalidades con el sd::vector
 		std::string *m_vect_nom_prod_in_clien_ptr;
-                std::string *m_copy_vect_items_ptr;
+        std::string *m_copy_vect_items_ptr;
 
 		
 	};

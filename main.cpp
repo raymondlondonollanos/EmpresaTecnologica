@@ -38,37 +38,38 @@ int main()
 	short num_items{};
 	std::string* items_ptr{ nullptr };
 
-
 	//obtencion de datos personales del cliente
 
-		std::cout << "\nIngresa tu primer nombre: ";
-		std::cin >> p_nombre;
+	std::cout << "\nIngresa tu primer nombre: ";
+	std::cin >> p_nombre;
 
-		std::cout << "\nIngresa tu segundo nombre, sino tiene presiona enter: ";
-		std::cin >> s_nombre;
+	std::cout << "\nIngresa tu segundo nombre, sino tiene presiona enter: ";
+	std::cin >> s_nombre;
 
-		std::cout << "\nIngresa tu primer apellido: ";
-		std::cin >> p_apellido;
+	std::cout << "\nIngresa tu primer apellido: ";
+	std::cin >> p_apellido;
 
-		std::cout << "\nIngresa tu segundo apellido, sino tiene presiona enter: ";
-		std::cin >> s_apellido;
+	std::cout << "\nIngresa tu segundo apellido, sino tiene presiona enter: ";
+	std::cin >> s_apellido;
 
-		std::cout << "\nIngresa tu numero de CC: ";
-		std::cin >> ID;
+	std::cout << "\nIngresa tu numero de CC: ";
+	std::cin >> ID;
 
-		//limpieza de buffer
-		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+	//limpieza de buffer
+	std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+
+	std::cout << "\nIngresa el numero de items a comprar en nuestras empresa de tecnologia: ";
+	std::cin >> num_items;
+
+	clientes::Clientes cl{ p_nombre , p_apellido , ID, num_items };
 	
+	cl.pedir_items_vec_copy(num_items);
+
+	cl.agregar_items();
+
+	cl.mostrar_item();
+
 		
-		cl.agregar_items(items_ptr);
-
-		//limpiamos el puntero, que no necesitamos 
-		delete[] items_ptr;
-
-		//declara nulo por buenas practicas
-		items_ptr = nullptr;
-
-		cl.mostrar_item();
 
 	return 0;
 }

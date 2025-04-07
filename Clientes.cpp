@@ -18,12 +18,9 @@ namespace clientes
 	Clientes::Clientes(std::string_view p_nombre, std::string_view s_nombre, std::string_view p_apellido, std::string_view s_apellido, int ID , short num_items)
 		: m_primr_nombre{p_nombre} , m_seg_nombre{s_nombre} ,
 		m_primr_apellido{m_primr_apellido}, m_seg_apellido{s_apellido} ,
-		m_ID{ ID } , m_num_item_input_cliente {
-		num_items
-	}
-
+		m_ID{ ID } , m_num_item {num_items}
 	{
-		m_vect_nom_prod_in_clien_ptr = new std::string[m_num_item_input_cliente];
+		m_vect_nom_prod_in_clien_ptr = new std::string[m_num_item];
 	}
 
 	Clientes::~Clientes()
@@ -33,8 +30,8 @@ namespace clientes
 		{
 			
 			delete[] m_vect_nom_prod_in_clien_ptr;
-		m_vect_nom_prod_in_clien_ptr = nullptr;
-		std::cout << "\nMemoria Limpiada ";
+		    m_vect_nom_prod_in_clien_ptr = nullptr;
+		    std::cout << "\nMemoria Limpiada ";
 		}
 
 	}
@@ -45,17 +42,8 @@ namespace clientes
 		: m_primr_nombre{ m_clientes.m_primr_nombre }, m_seg_nombre{ m_clientes.m_seg_nombre },
 		m_primr_apellido{m_clientes.m_primr_apellido} , m_seg_apellido{m_clientes.m_seg_apellido},
 		m_ID{m_clientes.m_ID},
-		m_num_item_input_cliente{ m_clientes.m_num_item_input_cliente }
+		m_num_item{ m_clientes.m_num_item }
 	{
-		
-			
-		
-			// Copia profunda del array dinámico
-			m_vect_nom_prod_in_clien_ptr = new std::string[m_num_item_input_cliente];
-
-			std::copy(m_clientes.m_vect_nom_prod_in_clien_ptr,
-				m_clientes.m_vect_nom_prod_in_clien_ptr + m_num_item_input_cliente,
-				m_vect_nom_prod_in_clien_ptr);
 
 		
 
@@ -76,29 +64,28 @@ namespace clientes
 		m_seg_nombre = m_clientes.m_seg_nombre;
 		m_primr_apellido = m_clientes.m_primr_apellido;
 		m_seg_apellido = m_clientes.m_seg_apellido;
-		m_num_item_input_cliente = m_clientes.m_num_item_input_cliente;
+		m_num_item= m_clientes.m_num_item;
 
 		// Copia profunda del array dinámico
-		m_vect_nom_prod_in_clien_ptr = new std::string[m_num_item_input_cliente];
+		m_vect_nom_prod_in_clien_ptr = new std::string[m_num_item];
 		std::copy(m_clientes.m_vect_nom_prod_in_clien_ptr,
-			m_clientes.m_vect_nom_prod_in_clien_ptr + m_num_item_input_cliente,
+			m_clientes.m_vect_nom_prod_in_clien_ptr + m_num_item,
 			m_vect_nom_prod_in_clien_ptr);
 
 		return *this;
 	}
 
-	void Clientes::agregar_items(std::string* &items)
+	void Clientes::agregar_items()
 	{
 		//se copiar el puntero en el puntero items
-		std::copy(items , items + m_num_item_input_cliente, m_vect_nom_prod_in_clien_ptr);
+		std::copy(m_copy_vect_items_ptr, m_copy_vect_items_ptr + m_num_item, m_vect_nom_prod_in_clien_ptr);
+
+		//desasiganar memoria de vector coppiado pendiente abajo
+
 	}
 
-        const std::string* pedir_items_vec_copy()
-        {
-                std::cout << "\nIngresa el numero de items a comprar en nuestras empresa de tecnologia: ";
-		std::cin >> num_items;
-
-		clientes::Clientes cl{p_nombre , p_apellido , ID, num_items};
+    const std::string* pedir_items_vec_copy(short num_items)
+    {
 
 		//Inicializamos el puntero para almacenar los items ingresado por el usuario
 		m_copy_vect_items_ptr = new std::string[num_items];
@@ -114,7 +101,7 @@ namespace clientes
 			m_copy_vect_items_ptr[i] = items_local;
 		}
 
-		cl.agregar_items(items_ptr);
+		return m_copy_vect_items_ptr;
             
 		
 	}
@@ -123,7 +110,7 @@ namespace clientes
 	void Clientes::mostrar_item() const
 	{
 		std::cout << "\nLista de items\n";
-		for (std::size_t i{ 0 }; i < m_num_item_input_cliente; i++)
+		for (std::size_t i{ 0 }; i < m_num_item; i++)
 		{
 			std::cout << "\n" << m_vect_nom_prod_in_clien_ptr[i];
 		}
