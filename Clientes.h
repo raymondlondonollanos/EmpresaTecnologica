@@ -34,8 +34,6 @@ namespace clientes
 
 		Clientes& operator=(const Clientes& m_clientes);
 
-		
-
 		//Funciones setter
 		void agregar_items();
 
