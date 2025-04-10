@@ -86,9 +86,9 @@ namespace clientes
 		std::string* temp_vector;
 		short cant_item_copyV{ 0 };
 		short cant_item_tempV{ 0 };
-		char validador{ 'n' };
+		char validador= 'n';
 
-		//std::cout << "Ingrese el numero de items: ";
+		std::cout << "Ingrese el numero de items: ";
 		//m_num_items pasa como una variable objeto implicito
 		//Por eso no se inicializa
 		//std::cin >> m_num_item;
