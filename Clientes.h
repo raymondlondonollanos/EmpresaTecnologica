@@ -40,9 +40,6 @@ namespace clientes
 		void agregar_items();
 
 
-        const std::string* pedir_items_vec_copy(short num_items);
-
-
 
 		//mostar los items sin modificarlos
 		void mostrar_item()const;
@@ -67,7 +64,6 @@ namespace clientes
 		//Declaramos un puntero string para probar las diferencias en 
                 //funcionalidades con el sd::vector
 		std::string *m_vect_nom_prod_in_clien_ptr;
-        std::string *m_copy_vect_items_ptr;
 
 		
 	};

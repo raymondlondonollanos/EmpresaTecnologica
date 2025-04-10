@@ -84,27 +84,7 @@ namespace clientes
 
 	}
 
-    const std::string* pedir_items_vec_copy(short num_items)
-    {
-
-		//Inicializamos el puntero para almacenar los items ingresado por el usuario
-		m_copy_vect_items_ptr = new std::string[num_items];
-
-		for (std::size_t i{ 0 }; i < m_copy_vect_items_ptr; i++)
-		{
-			//creacion de variable local string 
-			std::string items_local{};
-			
-			std::cout << "\nIngresa el items " << (i + 1) 
-				<< ": ";
-			std::cin >> items_local;
-			m_copy_vect_items_ptr[i] = items_local;
-		}
-
-		return m_copy_vect_items_ptr;
-            
-		
-	}
+    
 
 
 	void Clientes::mostrar_item() const

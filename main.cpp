@@ -29,45 +29,107 @@ int main()
 	
 #endif
 
-	//Ahora vamos a probar como pedir la informacion al cliente e ir la ingresando{};
-	std::string p_nombre{};
-	std::string s_nombre{};
-	std::string p_apellido{};
-	std::string s_apellido{};
-	int ID{};
-	short num_items{};
-	std::string* items_ptr{ nullptr };
 
-	//obtencion de datos personales del cliente
 
-	std::cout << "\nIngresa tu primer nombre: ";
-	std::cin >> p_nombre;
 
-	std::cout << "\nIngresa tu segundo nombre, sino tiene presiona enter: ";
-	std::cin >> s_nombre;
+        std::string* items_ptr;
+        std::string* copy_items_ptr;
+        std::string* tem_copy_items_ptr;
+        char validador = 'n';
+        int num_impu_user;
+        int temp_copy = 0;
 
-	std::cout << "\nIngresa tu primer apellido: ";
-	std::cin >> p_apellido;
 
-	std::cout << "\nIngresa tu segundo apellido, sino tiene presiona enter: ";
-	std::cin >> s_apellido;
+        std::cout << "Ingresa la cantidad de items ";
+        std::cin >> num_impu_user;
 
-	std::cout << "\nIngresa tu numero de CC: ";
-	std::cin >> ID;
+        do {
 
-	//limpieza de buffer
-	std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 
-	std::cout << "\nIngresa el numero de items a comprar en nuestras empresa de tecnologia: ";
-	std::cin >> num_items;
 
-	clientes::Clientes cl{ p_nombre , p_apellido , ID, num_items };
+            if ('s' == validador)
+            {
+
+                temp_copy = num_impu_user;
+
+                copy_items_ptr = new std::string[temp_copy];
+
+                std::copy(items_ptr, items_ptr + num_impu_user,
+                    copy_items_ptr);
+                std::cout << "funciona hasta quiw\n";
+
+
+                delete[] items_ptr;
+                items_ptr = nullptr;
+
+
+                std::cout << "Ingresa la cantidad de items ";
+                std::cin >> num_impu_user;
+
+                tem_copy_items_ptr = new std::string[num_impu_user];
+
+                items_ptr = new std::string[num_impu_user + temp_copy];
+
+
+                for (int i = 0; i < num_impu_user; ++i)
+                {
+                    std::string item;
+                    std::cout << "Ingresa los items: ";
+                    std::cin >> item;
+
+                    tem_copy_items_ptr[i] = item;
+
+                }
+
+                for (int i = 0; i < temp_copy; ++i)
+                {
+
+                    items_ptr[i] = copy_items_ptr[i];
+
+                }
+
+                for (int i = 0; i < num_impu_user; ++i)
+                {
+
+                    items_ptr[temp_copy + i] = copy_items_ptr[i];
+
+                }
+
+
+            }
+            else
+            {
+                items_ptr = new std::string[num_impu_user];
+
+                for (int i = 0; i < num_impu_user; ++i)
+                {
+                    std::string item;
+                    std::cout << "Ingresa los items: ";
+                    std::cin >> item;
+
+                    items_ptr[i] = item;
+
+                }
+
+            }
+
+
+            std::cout << "Deseas agregar mas item s/n";
+            std::cin >> validador;
+
+        } while ('s' == validador);
+
+
+        for (int i = 0; i < temp_copy + num_impu_user; ++i)
+        {
+
+            std::cout << " vector : " << items_ptr[i];
+
+        }
+
+     
+
 	
-	cl.pedir_items_vec_copy(num_items);
-
-	cl.agregar_items();
-
-	cl.mostrar_item();
 
 		
 
