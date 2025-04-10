@@ -19,7 +19,7 @@ namespace clientes
 	Clientes::Clientes(std::string_view p_nombre, std::string_view s_nombre, std::string_view p_apellido, std::string_view s_apellido, int ID , short num_items)
 		: m_primr_nombre{p_nombre} , m_seg_nombre{s_nombre} ,
 		m_primr_apellido{m_primr_apellido}, m_seg_apellido{s_apellido} ,
-	m_ID{ ID }
+	m_ID{ ID }, m_num_item{num_items}
 	{
 		m_vect_nom_prod_in_clien_ptr = new std::string[m_num_item];
 	}
@@ -88,10 +88,8 @@ namespace clientes
 		short cant_item_tempV{ 0 };
 		char validador= 'n';
 
-		std::cout << "Ingrese el numero de items: ";
-		//m_num_items pasa como una variable objeto implicito
-		//Por eso no se inicializa
-		//std::cin >> m_num_item;
+		
+
 
 
 		//Validando el ciclo de la entrada de datos para el ingreso de items
@@ -104,7 +102,7 @@ namespace clientes
 				//creamos un string local para almacenar datos ingresados por usuario
 				std::string item_local;
 
-				std::cout << "Ingrese el numero de items: " << m_num_item;
+				//std::cout << "Ingrese el numero de items: " << m_num_item;
 
 				//Inicalizamos el puntero vect_imput_items
 				m_vect_nom_prod_in_clien_ptr = new std::string[m_num_item];
