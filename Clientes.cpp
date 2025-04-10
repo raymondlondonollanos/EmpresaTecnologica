@@ -77,10 +77,9 @@ namespace clientes
 
 	void Clientes::agregar_items()
 	{
-		//se copiar el puntero en el puntero items
-		std::copy(m_copy_vect_items_ptr, m_copy_vect_items_ptr + m_num_item, m_vect_nom_prod_in_clien_ptr);
+		
 
-		//desasiganar memoria de vector coppiado pendiente abajo
+		
 
 	}
 
