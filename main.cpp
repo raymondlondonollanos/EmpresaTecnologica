@@ -32,7 +32,7 @@ int main()
 
 
 
-	clientes::Clientes cl{ "Raymond","Llanos",1130343,3};
+	clientes::Clientes cl{ "Raymond","Llanos",1130343 , 4};
 
 	cl.agregar_items();
 
