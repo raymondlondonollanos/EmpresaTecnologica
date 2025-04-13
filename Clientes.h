@@ -29,7 +29,7 @@ namespace clientes
 			std::string_view p_apellido, std::string_view s_apellido , int ID , short num_items);
 
 
-		//Eliminacion del constructor de copias, no queremos asignarle a otro cliente las propiiedades de uno ya existente por eso lo eliminamos
+		//constructor de copias
 		Clientes(const Clientes& m_clientes) ;
 
 		Clientes& operator=(const Clientes& m_clientes);

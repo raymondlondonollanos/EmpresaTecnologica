@@ -102,7 +102,7 @@ namespace clientes
 				//creamos un string local para almacenar datos ingresados por usuario
 				std::string item_local;
 
-				//std::cout << "Ingrese el numero de items: " << m_num_item;
+				std::cout << "Ingrese el numero de items: " << m_num_item;
 
 				//Inicalizamos el puntero vect_imput_items
 				m_vect_nom_prod_in_clien_ptr = new std::string[m_num_item];
